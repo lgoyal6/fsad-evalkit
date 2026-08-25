@@ -85,7 +85,7 @@ Bergmann et al., "Uninformed Students" (CVPR 2020); used by essentially every MV
 paper since.
 
 **This is the crux.** In our own baseline run (DINOv2 ViT-S/14 + PatchCore kNN, toy set,
-k=10, `grain` category, see `RESULTS.md`), the *same model*, on the *same images*, in the
+k=10, `grain` category, see `results_dinov2_toy.json`), the *same model*, on the *same images*, in the
 *same run*, produced:
 
 | image-level AUROC | pixel-level AUROC | pixel-level AUPRO |
@@ -241,8 +241,8 @@ than one who reports only the 0.999.
 
 ## Filled-in worked example
 
-`fsad-evalkit/` in this bundle is a runnable DINOv2 + PatchCore-style kNN baseline that
-fills in sections 1, 2, 4 and 5 automatically, and `RESULTS.md` is the output. It runs
+The harness in this repo is a runnable DINOv2 + PatchCore-style kNN baseline that
+fills in sections 1, 2, 4 and 5 automatically, and `results.json` is the output. It runs
 offline on a toy set in about a minute, and points at real MVTec AD with one flag. It is
 not a competitive system; it exists to show that every field on this card is cheap to
 produce.

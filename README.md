@@ -5,7 +5,7 @@ A small, runnable few-shot anomaly-detection baseline that fills in an eval card
 AUROC, pixel-level AUROC, pixel-level AUPRO, a few-shot sweep over k = 1/2/5/10, and CPU
 p50/p95/p99 inference latency.
 
-The companion document is `../EVAL_CARD.md`. The harness exists to show that every field
+The companion document is `EVAL_CARD.md`. The harness exists to show that every field
 on that card is cheap to produce: this is 369 lines of code and runs on a laptop CPU.
 
 ---
@@ -41,7 +41,7 @@ worked example rather than a lecture.
 p95 92.2 ms, p99 123.4 ms on one CPU thread, 100 samples.
 
 **What it is not.** Every number here is SYNTHETIC, measured on a toy dataset that ships with
-the repo so it runs offline in a couple of minutes. The DINOv2 features are real, the images
+the repo so it runs offline in under a minute. The DINOv2 features are real, the images
 are not. This demonstrates the protocol; it is not a competitive result and it says nothing
 about what Allus measured.
 
