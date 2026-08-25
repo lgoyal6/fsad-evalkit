@@ -46,6 +46,30 @@ are not. This demonstrates the protocol; it is not a competitive result and it s
 about what Allus measured.
 
 
+## The harness
+
+```mermaid
+flowchart LR
+  DATA["data.py<br/>toy, generated offline<br/>or real MVTec AD"] --> SUP["k normal support images<br/>k = 1 / 2 / 5 / 10"]
+  DATA --> TEST["test images"]
+  SUP --> BB["backbones.py<br/>frozen DINOv2 ViT-S/14<br/>or the toy stand-in"]
+  TEST --> BB
+  BB --> BANK[("patchcore.py<br/>memory bank of every<br/>support patch feature")]
+  BB --> SCORE["nearest-neighbour distance<br/>per test patch"]
+  BANK --> SCORE
+  SCORE --> MAP["pixel map<br/>upsampled, Gaussian sigma=4"]
+  MAP --> M1["image AUROC<br/>is it defective at all"]
+  MAP --> M2["pixel AUROC<br/>which pixels"]
+  MAP --> M3["pixel AUPRO<br/>which pixels, every region<br/>weighted equally"]
+  M1 & M2 & M3 --> CARD[("results.json<br/>and the eval card")]
+
+  style M3 fill:#1f6feb,color:#fff
+```
+
+AUPRO is the one that moves when a model is genuinely good at localisation rather
+than good at noticing a picture is odd, and it is almost always the lowest of the
+three. That is the whole reason a single unlabelled percentage cannot be checked.
+
 ## Run it
 
 ```bash
